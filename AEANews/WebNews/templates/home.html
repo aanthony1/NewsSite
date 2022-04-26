@@ -1,0 +1,22 @@
+<!--Added extend for base html. Andre` Anthony 1/7/2021-->
+
+{% extends "base.html" %}
+    {% block body %}
+    
+    <br>
+<div class="row">
+  <!--for statement added to bring in News API content into home page using x variable. Andre` Anthony 1//2021-->
+  {% for x in api.articles %}
+  <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <img src="{{x.urlToImage}}" class="card-img-top" alt="{{x.source.name}}">
+        <div class="card-body">
+            <h5 class="card-title">{{x.title}}</h5>
+            <p class="card-text">{{x.description|truncatechars:150}}</p>
+            <a href="{{x.url}}" target="_blank" class="btn btn-primary">Read More</a>
+          </div>
+    </div>
+  </div>
+    {%endfor%}
+</div>
+    {% endblock %}
